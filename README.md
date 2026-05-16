@@ -15,12 +15,16 @@ The lab focused on reviewing network traffic, applying protocol filters, followi
 
 The lab covered packet analysis using a PCAP file inside a training environment. The original lab environment and PCAP file are no longer accessible, so this repository documents the workflow, tools, filters, and security lessons learned.
 
-## Tools Covered
+## Tools Used
 
-- Wireshark
-- NetworkMiner
+| Tool | Purpose |
+|---|---|
+| Wireshark | Packet analysis and protocol inspection |
+| NetworkMiner | Network forensic artifact extraction |
 
 ## Protocols Reviewed
+
+## Protocols Analyzed
 
 - IPv4 / IPv6
 - ARP
@@ -28,7 +32,7 @@ The lab covered packet analysis using a PCAP file inside a training environment.
 - TCP / UDP
 - FTP
 - TELNET
-- POP
+- POP3
 - SMTP
 - DNS
 - HTTP
