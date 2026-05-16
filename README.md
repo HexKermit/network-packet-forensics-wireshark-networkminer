@@ -1,8 +1,9 @@
 # Packet Analysis Lab Write-Up: Wireshark and NetworkMiner
 
-![Status](https://img.shields.io/badge/Status-Complete-green)
-![Tools](https://img.shields.io/badge/Tools-Wireshark%20%7C%20NetworkMiner-blue)
-![Focus](https://img.shields.io/badge/Focus-Network%20Forensics-red)
+![Status](https://img.shields.io/badge/Status-Completed-green)
+![Focus](https://img.shields.io/badge/Focus-Network_Forensics-blue)
+![Tools](https://img.shields.io/badge/Tools-Wireshark_|_NetworkMiner-red)
+![Level](https://img.shields.io/badge/Level-Defensive_Security-orange)
 
 ## Overview
 
