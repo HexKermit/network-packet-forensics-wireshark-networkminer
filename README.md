@@ -124,3 +124,16 @@ Network traffic analysis can help security teams:
 ## Limitations
 
 The original lab environment and PCAP file are no longer accessible. This repository is a professional write-up based on the completed lab workflow and learning notes.
+
+## Repository Structure
+
+```text
+.
+├── README.md
+├── notes
+│   ├── detection-recommendations.md
+│   ├── key-concepts.md
+│   └── wireshark-filters.md
+└── screenshots
+    └── README.md
+```
