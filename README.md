@@ -59,11 +59,38 @@ The lab covered packet analysis using a PCAP file inside a training environment.
 
 ## Key Security Lessons
 
-- TELNET and FTP can expose credentials in plaintext.
-- Packet captures can reveal files, emails, images, credentials, and hosts.
-- Wireshark is useful for packet-level investigation.
-- NetworkMiner is useful for quick artifact extraction.
-- Cleartext protocols should be replaced with secure alternatives.
+### Cleartext Protocol Risk
+
+Protocols such as TELNET and FTP transmit credentials and commands without encryption. Attackers monitoring network traffic may recover usernames, passwords, and transferred data.
+
+### Packet Capture Exposure
+
+PCAP files may contain:
+- Credentials
+- Internal IP addresses
+- E-mails
+- Files
+- Images
+- Hostnames
+
+Improper handling of packet captures can expose sensitive information during investigations.
+
+### Forensic Visibility
+
+Network traffic analysis can help security teams:
+- Identify suspicious communications
+- Detect insecure protocols
+- Review authentication activity
+- Investigate transferred files
+- Reconstruct attacker behavior
+
+### Secure Alternatives
+
+| Insecure Protocol | Secure Alternative |
+|---|---|
+| TELNET | SSH |
+| FTP | SFTP / SCP |
+| HTTP | HTTPS |
 
 ## Skills Demonstrated
 
