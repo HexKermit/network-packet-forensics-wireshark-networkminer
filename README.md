@@ -1,44 +1,21 @@
-# Packet Analysis Lab Write-Up: Wireshark and NetworkMiner
+# Network Traffic and Protocol Analysis Investigation
 
 ![Status](https://img.shields.io/badge/Status-Completed-green)
-![Focus](https://img.shields.io/badge/Focus-Network_Forensics-blue)
-![Tools](https://img.shields.io/badge/Tools-Wireshark_|_NetworkMiner-red)
+![Focus](https://img.shields.io/badge/Focus-Network%20Forensics-blue)
+![Tools](https://img.shields.io/badge/Tools-Wireshark%20%7C%20NetworkMiner-orange)
+![MITRE](https://img.shields.io/badge/MITRE-T1040-red)
 
-## Overview
+---
 
-This repository documents a completed hands-on packet analysis lab using Wireshark and NetworkMiner.
+## Threat Overview
 
-The lab focused on reviewing network traffic, applying protocol filters, following TCP streams, exporting HTTP objects, and analyzing forensic artifacts.
+This investigation focused on analyzing packet capture (PCAP) data to identify insecure protocols, exposed credentials, suspicious network activity, and forensic artifacts.
 
-## Lab Context
+The lab simulated a real-world network investigation workflow involving protocol filtering, traffic inspection, credential exposure analysis, and artifact extraction.
 
-The lab covered packet analysis using a PCAP file inside a training environment. The original lab environment and PCAP file are no longer accessible, so this repository documents the workflow, tools, filters, and security lessons learned.
+---
 
-## Tools Used
-
-| Tool | Purpose |
-|---|---|
-| Wireshark | Packet analysis and protocol inspection |
-| NetworkMiner | Network forensic artifact extraction |
-
-## Protocols Analyzed
-
-- IPv4 / IPv6
-- ARP
-- ICMP
-- TCP / UDP
-- FTP
-- TELNET
-- POP3
-- SMTP
-- DNS
-- HTTP
-- SSH
-- RDP
-- SMB
-- NBNS
-
-## MITRE ATT&CK Mapping
+# MITRE ATT&CK Mapping
 
 | Technique | ID | Tactic |
 |---|---|---|
@@ -46,105 +23,193 @@ The lab covered packet analysis using a PCAP file inside a training environment.
 | Unsecured Credentials | T1552 | Credential Access |
 | Remote Services | T1021 | Lateral Movement |
 
-## Investigation Workflow
+---
 
-1. Opened packet capture in Wireshark
-2. Applied protocol filters
-3. Reviewed TCP and UDP traffic
-4. Followed TCP streams for cleartext protocols
-5. Exported HTTP objects
-6. Loaded packet capture into NetworkMiner
-7. Reviewed hosts, images, messages, credentials, and files
+# Investigation Methodology
 
-## Key Security Lessons
+1. Initial packet capture review
+2. Protocol-based traffic filtering
+3. TCP stream analysis
+4. Credential exposure investigation
+5. Artifact extraction and forensic review
+6. Network visibility assessment
+7. Detection and security recommendation development
 
-### Cleartext Protocol Risk
+---
 
-Protocols such as TELNET and FTP transmit credentials and commands without encryption. Attackers monitoring network traffic may recover usernames, passwords, and transferred data.
+# Tools Used
 
-### Packet Capture Exposure
-
-PCAP files may contain:
-- Credentials
-- Internal IP addresses
-- E-mails
-- Files
-- Images
-- Hostnames
-
-Improper handling of packet captures can expose sensitive information during investigations.
-
-### Forensic Visibility
-
-Network traffic analysis can help security teams:
-- Identify suspicious communications
-- Detect insecure protocols
-- Review authentication activity
-- Investigate transferred files
-- Reconstruct attacker behavior
-
-### Secure Alternatives
-
-| Insecure Protocol | Secure Alternative |
+| Tool | Purpose |
 |---|---|
-| TELNET | SSH |
-| FTP | SFTP / SCP |
-| HTTP | HTTPS |
+| Wireshark | Packet analysis and protocol inspection |
+| NetworkMiner | Network forensic artifact extraction |
+| Kali Linux | Investigation environment |
 
-## Skills Demonstrated
+---
 
-- Packet Analysis
-- Protocol Inspection
-- Network Traffic Analysis
-- TCP/IP Analysis
-- PCAP Investigation
-- Threat Investigation
-- Network Forensics
-- Artifact Extraction
-- Defensive Security Documentation
-- Security Analysis Workflow
+# Environment
 
-## Technologies and Concepts
+| Component | Details |
+|---|---|
+| Platform | VMware |
+| Operating System | Kali Linux / Windows |
+| Primary Tool | Wireshark |
+| Secondary Tool | NetworkMiner |
+| File Type | PCAP |
 
-- Wireshark
-- NetworkMiner
+---
+
+# Protocols Analyzed
+
 - TCP
 - UDP
-- ICMP
-- ARP
+- HTTP
 - FTP
 - TELNET
 - SMTP
+- POP3
 - DNS
-- HTTP
 - SMB
-- RDP
+- NBNS
 
-## Screenshots
+---
 
-Original screenshots from the lab environment are not included because the original training environment and PCAP files are no longer accessible.
+# Technical Findings
 
-This repository focuses on:
-- investigation workflow
-- packet analysis methodology
-- protocol filtering
-- forensic concepts
-- security findings
-- detection recommendations
+## Key Security Findings
 
-## Limitations
+### Plaintext Credential Exposure
 
-The original lab environment and PCAP file are no longer accessible. This repository is a professional write-up based on the completed lab workflow and learning notes.
+TELNET, FTP, and POP3 traffic exposed usernames and passwords in plaintext.
 
-## Repository Structure
+### Insecure Protocol Usage
+
+Multiple legacy protocols were identified transmitting sensitive data without encryption.
+
+### Artifact Exposure
+
+Network traffic contained recoverable images, files, and forensic artifacts.
+
+### Internal Network Visibility
+
+Packet analysis revealed internal communication behavior and service interactions.
+
+---
+
+## Investigation Evidence
+
+### Plaintext Credential Exposure via TELNET
+
+TELNET traffic analysis revealed plaintext authentication activity inside the TCP stream. Usernames and passwords were observable without encryption.
+
+![TELNET Credential Exposure](screenshots/credential-analysis/telnet-plaintext-credentials.png)
+
+---
+
+### FTP Traffic and File Transfer Analysis
+
+FTP protocol traffic was analyzed to review authentication behavior, file transfers, and insecure protocol usage.
+
+![FTP Traffic Analysis](screenshots/protocol-analysis/ftp-traffic-analysis.png)
+
+---
+
+### HTTP Object Extraction Workflow
+
+Wireshark HTTP object export functionality was used to identify recoverable web artifacts transferred across the network.
+
+![HTTP Object Export](screenshots/artifact-analysis/http-object-export.png)
+
+---
+
+### NetworkMiner Credential Analysis
+
+NetworkMiner extracted authentication artifacts and credentials directly from packet capture traffic.
+
+![NetworkMiner Credential Analysis](screenshots/credential-analysis/networkminer-credential-analysis.png)
+
+---
+
+### NetworkMiner Image Artifact Analysis
+
+Recovered image artifacts demonstrated how unencrypted traffic may expose transferred content and forensic evidence.
+
+![NetworkMiner Image Analysis](screenshots/artifact-analysis/networkminer-image-analysis.png)
+
+---
+
+### TCP Flag and Session Analysis
+
+TCP session analysis was performed to review packet behavior, ACK/PSH flags, and communication patterns during the investigation.
+
+![TCP Flag Analysis](screenshots/traffic-analysis/tcp-flag-analysis.png)
+
+---
+
+# Detection Recommendations
+
+## Security Improvements
+
+- Replace TELNET with SSH
+- Replace FTP with SFTP or SCP
+- Enforce encrypted communication protocols
+- Monitor abnormal authentication activity
+- Implement network segmentation
+- Restrict insecure legacy services
+
+---
+
+# Security Impact
+
+Organizations using insecure protocols risk exposure of:
+
+- usernames
+- passwords
+- internal IP addresses
+- transferred files
+- e-mail communications
+- sensitive network metadata
+
+Packet captures may contain valuable intelligence for attackers if improperly handled.
+
+---
+
+# Skills Demonstrated
+
+- Network Traffic Analysis
+- Packet Inspection
+- Protocol Filtering
+- TCP Stream Analysis
+- Credential Exposure Investigation
+- Artifact Extraction
+- Threat Investigation
+- Defensive Security Analysis
+- Network Forensics
+- Security Documentation
+
+---
+
+# Key Takeaways
+
+This investigation demonstrated how insecure protocols can expose sensitive authentication data and forensic artifacts during network communications.
+
+The analysis also highlighted the importance of encrypted protocols, traffic monitoring, and packet-level visibility during security investigations.
+
+---
+
+# Repository Structure
 
 ```text
 .
-├── README.md
-├── notes
-│   ├── detection-recommendations.md
-│   ├── key-concepts.md
-│   └── wireshark-filters.md
-└── screenshots
-    └── README.md
-```
+├── evidence
+├── findings
+├── iocs
+├── reports
+├── screenshots
+│   ├── artifact-analysis
+│   ├── credential-analysis
+│   ├── protocol-analysis
+│   └── traffic-analysis
+├── timelines
+├── LICENSE
+└── README.md
