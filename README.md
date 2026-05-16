@@ -22,8 +22,6 @@ The lab covered packet analysis using a PCAP file inside a training environment.
 | Wireshark | Packet analysis and protocol inspection |
 | NetworkMiner | Network forensic artifact extraction |
 
-## Protocols Reviewed
-
 ## Protocols Analyzed
 
 - IPv4 / IPv6
@@ -69,13 +67,32 @@ The lab covered packet analysis using a PCAP file inside a training environment.
 
 ## Skills Demonstrated
 
-- Packet analysis
-- Protocol analysis
-- Network forensics
-- TCP stream review
-- Artifact extraction
-- Cleartext credential identification
-- Defensive security documentation
+- Packet Analysis
+- Protocol Inspection
+- Network Traffic Analysis
+- TCP/IP Analysis
+- PCAP Investigation
+- Threat Investigation
+- Network Forensics
+- Artifact Extraction
+- Defensive Security Documentation
+- Security Analysis Workflow
+
+## Technologies and Concepts
+
+- Wireshark
+- NetworkMiner
+- TCP
+- UDP
+- ICMP
+- ARP
+- FTP
+- TELNET
+- SMTP
+- DNS
+- HTTP
+- SMB
+- RDP
 
 ## Limitations
 
