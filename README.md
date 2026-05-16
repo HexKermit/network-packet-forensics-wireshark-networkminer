@@ -3,7 +3,6 @@
 ![Status](https://img.shields.io/badge/Status-Completed-green)
 ![Focus](https://img.shields.io/badge/Focus-Network_Forensics-blue)
 ![Tools](https://img.shields.io/badge/Tools-Wireshark_|_NetworkMiner-red)
-![Level](https://img.shields.io/badge/Level-Defensive_Security-orange)
 
 ## Overview
 
@@ -39,6 +38,14 @@ The lab covered packet analysis using a PCAP file inside a training environment.
 - SMB
 - NBNS
 
+## MITRE ATT&CK Mapping
+
+| Technique | ID | Tactic |
+|---|---|---|
+| Network Sniffing | T1040 | Credential Access |
+| Unsecured Credentials | T1552 | Credential Access |
+| Remote Services | T1021 | Lateral Movement |
+
 ## Investigation Workflow
 
 1. Opened packet capture in Wireshark
@@ -48,14 +55,6 @@ The lab covered packet analysis using a PCAP file inside a training environment.
 5. Exported HTTP objects
 6. Loaded packet capture into NetworkMiner
 7. Reviewed hosts, images, messages, credentials, and files
-
-## MITRE ATT&CK Mapping
-
-| Technique | ID | Tactic |
-|---|---|---|
-| Network Sniffing | T1040 | Credential Access |
-| Unsecured Credentials | T1552 | Credential Access |
-| Remote Services | T1021 | Lateral Movement |
 
 ## Key Security Lessons
 
@@ -120,6 +119,18 @@ Network traffic analysis can help security teams:
 - HTTP
 - SMB
 - RDP
+
+## Screenshots
+
+Original screenshots from the lab environment are not included because the original training environment and PCAP files are no longer accessible.
+
+This repository focuses on:
+- investigation workflow
+- packet analysis methodology
+- protocol filtering
+- forensic concepts
+- security findings
+- detection recommendations
 
 ## Limitations
 
