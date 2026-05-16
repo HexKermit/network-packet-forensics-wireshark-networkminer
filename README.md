@@ -51,6 +51,14 @@ The lab covered packet analysis using a PCAP file inside a training environment.
 6. Loaded packet capture into NetworkMiner
 7. Reviewed hosts, images, messages, credentials, and files
 
+## MITRE ATT&CK Mapping
+
+| Technique | ID | Tactic |
+|---|---|---|
+| Network Sniffing | T1040 | Credential Access |
+| Unsecured Credentials | T1552 | Credential Access |
+| Remote Services | T1021 | Lateral Movement |
+
 ## Key Security Lessons
 
 - TELNET and FTP can expose credentials in plaintext.
